@@ -11,8 +11,6 @@ __Constraints:__
 
 * __Interpretability:__ Taxi drivers are only concern about good prediction resuls. Hence, there is a no interpretability required.
 
-__Our goal is to reduce the percentage error is low as possible.__
-
 ## Source of Data
 __Data can be downloaded from here:__  
 Get the data from : http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml (2016 data) The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC)
