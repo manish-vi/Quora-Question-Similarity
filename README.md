@@ -7,17 +7,19 @@ For a given location in New York City, our goal is to predict the number of pick
 __Objectives:__ Our objective is to To find number of pickups, given location cordinates(latitude and longitude) and time, in the query reigion and surrounding regions.To solve the above we would be using data collected in Jan - Mar 2015 to predict the pickups in Jan - Mar 2016.
 
 __Constraints:__ 
-* __Latency__ Given a location and current time of a taxi driver, as a taxi driver, he/she excepts to get the predicted pickups in his/her region and the adjoining regions in few seconds. Hence, there is a medium latency requirement.
+* __Latency__ Given a location and current time a taxi driver excepts to get the predicted demands in his/her neighboring region in a few seconds. Hence, there is a medium latency requirement.
 
-* __Interpretability:__ As long as taxi driver gets good prediction result, he/she is not be much interested in the interpretability of the result. He/she is not much interested in why he/she is getting this result. Hence, there is a no interpretability required.
-
-* __Relative Errors:__ Mean Absolute Percentage Error will be the relative error we will consider. Let say the predicted pickups for a particular location are 100, but actual pickups are 102, the percentage error will be 2% and Absolute error is 2. The taxi driver will be more interested in the percentage error than the absolute error. Let say in some region the predicted pickups are 250, and if taxi driver knows that the relative error is 10% then he/she will consider the predicted result to be in the range of 225 to 275, which is considerable.
+* __Interpretability:__ Taxi drivers are only concern about good prediction resuls. Hence, there is a no interpretability required.
 
 __Our goal is to reduce the percentage error is low as possible.__
 
 ## Source of Data
 __Data can be downloaded from here:__  
-Ge the data from : http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml (2016 data) The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC)
+Get the data from : http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml (2016 data) The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC)
+
+## Performance metrics
+1. Mean Absolute percentage error.
+2. Mean Squared error.
 
 ## Getting Started
 Start by downloading the project and run "Taxi-Demand-Prediction-NYC.ipynb" file in ipython-notebook.
