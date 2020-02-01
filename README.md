@@ -1,77 +1,47 @@
-<h1 style="text-align:center;font-size:30px;" > Quora Question Pairs </h1>
+# Taxi Demand Prediction New York City
 
-<h1> 1. Business Problem </h1>
+## Business Problem/Problem Statement
+For a given location in New York City, our goal is to predict the number of pickups in that given location. The taxi driver uses prediction to move to the locations where predicted pickups are high.
 
-<h2> 1.1 Description </h2>
+## Objectives & Constraints 
+__Objectives:__ Our objective is to To find number of pickups, given location cordinates(latitude and longitude) and time, in the query reigion and surrounding regions.To solve the above we would be using data collected in Jan - Mar 2015 to predict the pickups in Jan - Mar 2016.
 
-<p>Quora is a place to gain and share knowledge—about anything. It’s a platform to ask questions and connect with people who contribute unique insights and quality answers. This empowers people to learn from each other and to better understand the world.</p>
-<p>
-Over 100 million people visit Quora every month, so it's no surprise that many people ask similarly worded questions. Multiple questions with the same intent can cause seekers to spend more time finding the best answer to their question, and make writers feel they need to answer multiple versions of the same question. Quora values canonical questions because they provide a better experience to active seekers and writers, and offer more value to both of these groups in the long term.
-</p>
-<br>
-> Credits: Kaggle 
+__Constraints:__ 
+* __Latency__ Given a location and current time of a taxi driver, as a taxi driver, he/she excepts to get the predicted pickups in his/her region and the adjoining regions in few seconds. Hence, there is a medium latency requirement.
+
+* __Interpretability:__ As long as taxi driver gets good prediction result, he/she is not be much interested in the interpretability of the result. He/she is not much interested in why he/she is getting this result. Hence, there is a no interpretability required.
+
+* __Relative Errors:__ Mean Absolute Percentage Error will be the relative error we will consider. Let say the predicted pickups for a particular location are 100, but actual pickups are 102, the percentage error will be 2% and Absolute error is 2. The taxi driver will be more interested in the percentage error than the absolute error. Let say in some region the predicted pickups are 250, and if taxi driver knows that the relative error is 10% then he/she will consider the predicted result to be in the range of 225 to 275, which is considerable.
+
+__Our goal is to reduce the percentage error is low as possible.__
+
+## Source of Data
+__Data can be downloaded from here:__  
+Ge the data from : http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml (2016 data) The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC)
+
+## Getting Started
+Start by downloading the project and run "Taxi-Demand-Prediction-NYC.ipynb" file in ipython-notebook.
+
+## Prerequisites
+You need to have installed following softwares and libraries in your machine before running this project.
+1. Python 3: https://www.python.org/downloads/
+2. Anaconda: It will install ipython notebook and most of the libraries which are needed like sklearn, pandas, seaborn, matplotlib, numpy and scipy: https://www.anaconda.com/download/
+
+## Libraries: 
+* __dask:__ It is used to handle very large files.
+    * i) pip3 install dask
+
+* __folium:__ It is used to plot maps using latitude and longitude.
+    * i) pip3 install folium
+    * ii) conda install -c conda-forge folium
+
+* __xgboost:__ It is used to make xgboost regression model. 
+    * i)  pip3 install xgboost
+    * ii) conda install -c conda-forge xgboost 
+
+* __gpxpy:__ It is used while we calculate the straight line distance between two (latitude, longitude) pairs in miles.
+    * i) pip install gpxpy
 
 
-__ Problem Statement __
-- Identify which questions asked on Quora are duplicates of questions that have already been asked. 
-- This could be useful to instantly provide answers to questions that have already been answered. 
-- We are tasked with predicting whether a pair of questions are duplicates or not. 
-
-<h2> 1.2 Sources/Useful Links</h2>
-
-- Source : https://www.kaggle.com/c/quora-question-pairs
-<br><br>____ Useful Links ____
-- Discussions : https://www.kaggle.com/anokas/data-analysis-xgboost-starter-0-35460-lb/comments
-- Kaggle Winning Solution and other approaches: https://www.dropbox.com/sh/93968nfnrzh8bp5/AACZdtsApc1QSTQc7X0H3QZ5a?dl=0
-- Blog 1 : https://engineering.quora.com/Semantic-Question-Matching-with-Deep-Learning
-- Blog 2 : https://towardsdatascience.com/identifying-duplicate-questions-on-quora-top-12-on-kaggle-4c1cf93f1c30
-
-<h2>1.3 Real world/Business Objectives and Constraints </h2>
-
-1. The cost of a mis-classification can be very high.
-2. You would want a probability of a pair of questions to be duplicates so that you can choose any threshold of choice.
-3. No strict latency concerns.
-4. Interpretability is partially important.
-
-<h1>2. Machine Learning Probelm </h1>
-
-<h2> 2.1 Data </h2>
-
-<h3> 2.1.1 Data Overview </h3>
-
-<p> 
-- Data will be in a file Train.csv <br>
-- Train.csv contains 5 columns : qid1, qid2, question1, question2, is_duplicate <br>
-- Size of Train.csv - 60MB <br>
-- Number of rows in Train.csv = 404,290
-</p>
-
-<h3> 2.1.2 Example Data point </h3>
-
-<pre>
-"id","qid1","qid2","question1","question2","is_duplicate"
-"0","1","2","What is the step by step guide to invest in share market in india?","What is the step by step guide to invest in share market?","0"
-"1","3","4","What is the story of Kohinoor (Koh-i-Noor) Diamond?","What would happen if the Indian government stole the Kohinoor (Koh-i-Noor) diamond back?","0"
-"7","15","16","How can I be a good geologist?","What should I do to be a great geologist?","1"
-"11","23","24","How do I read and find my YouTube comments?","How can I see all my Youtube comments?","1"
-</pre>
-
-<h2> 2.2 Mapping the real world problem to an ML problem </h2>
-
-<h3> 2.2.1 Type of Machine Leaning Problem </h3>
-
-<p> It is a binary classification problem, for a given pair of questions we need to predict if they are duplicate or not. </p>
-
-<h3> 2.2.2 Performance Metric </h3>
-
-Source: https://www.kaggle.com/c/quora-question-pairs#evaluation
-
-Metric(s): 
-* log-loss : https://www.kaggle.com/wiki/LogarithmicLoss
-* Binary Confusion Matrix
-
-<h2> 2.3 Train and Test Construction </h2>
-
-<p>  </p>
-<p> We build train and test by randomly splitting in the ratio of 70:30 or 80:20 whatever we choose as we have sufficient points to work with. </p>
-
+## Authors
+•	Manish Vishwakarma - Complete work  
