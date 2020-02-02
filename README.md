@@ -66,6 +66,34 @@ __ Problem Statement __
 
 Source: https://www.kaggle.com/c/quora-question-pairs#evaluation
 
-Metric(s): 
+## Metric(s): 
 * log-loss : https://www.kaggle.com/wiki/LogarithmicLoss
 * Binary Confusion Matrix
+
+## Getting Started
+Start by downloading the project and run "Quora_Question_Similarity_Case_Study.ipynb" file in ipython-notebook.
+
+## Prerequisites
+You need to have installed following softwares and libraries before running this project.
+1. Python 3: https://www.python.org/downloads/
+2. Anaconda: It will install ipython notebook and most of the libraries which are needed like sklearn, pandas, seaborn, matplotlib, numpy and scipy: https://www.anaconda.com/download/
+
+## Libraries
+* __xgboost:__ It is used to make xgboost regression model.
+    * pip install xgboost
+    * conda install -c conda-forge xgboost
+    
+* __fuzzywuzzy:__ It uses Levenshtein Distance to calculate the differences between sequences in a simple-to-use package.
+    * pip install fuzzywuzzy
+    * conda install -c conda-forge fuzzywuzzy
+
+* __scikit-learn:__ scikit-learn is a Python module for machine learning built on top of SciPy.
+    * pip install scikit-learn
+    * conda install -c conda-forge scikit-learn
+
+* __nltk:__ The Natural Language Toolkit (NLTK) is a Python package for natural language processing. 
+    * pip install nltk
+    * conda install -c conda-forge nltk
+
+## Authors
+•	Manish Vishwakarma - Complete work  
