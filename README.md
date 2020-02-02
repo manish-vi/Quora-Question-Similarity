@@ -66,19 +66,19 @@ __ Problem Statement __
 
 Source: https://www.kaggle.com/c/quora-question-pairs#evaluation
 
-## Metric(s): 
+## 3. Metric(s): 
 * log-loss : https://www.kaggle.com/wiki/LogarithmicLoss
 * Binary Confusion Matrix
 
-## Getting Started
+## 4. Getting Started
 Start by downloading the project and run "Quora_Question_Similarity_Case_Study.ipynb" file in ipython-notebook.
 
-## Prerequisites
+## 5. Prerequisites
 You need to have installed following softwares and libraries before running this project.
 1. Python 3: https://www.python.org/downloads/
 2. Anaconda: It will install ipython notebook and most of the libraries which are needed like sklearn, pandas, seaborn, matplotlib, numpy and scipy: https://www.anaconda.com/download/
 
-## Libraries
+## 6. Libraries
 * __xgboost:__ It is used to make xgboost regression model.
     * pip install xgboost
     * conda install -c conda-forge xgboost
@@ -95,5 +95,5 @@ You need to have installed following softwares and libraries before running this
     * pip install nltk
     * conda install -c conda-forge nltk
 
-## Authors
+## 7. Authors
 •	Manish Vishwakarma - Complete work  
